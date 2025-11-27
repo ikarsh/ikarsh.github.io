@@ -15,4 +15,8 @@
     The first half (group cohomology & local class field theory) is
     really polished and the second half (Brauer groups, global class field theory) is more drafty.
     There is also a proof of Chebotarev density theorem.
-  # date: "2024"
+- title: "GAGA"
+  url: "/assets/papers/gaga.pdf"
+  comments: >
+    A writeup of the proof of GAGA.
+    Meant to contain all the relevant background.
