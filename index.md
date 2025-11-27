@@ -2,6 +2,6 @@
 layout: home
 ---
 
-<!-- <div class="home-intro">
-  <p>Welcome — this is a site about mathematics and other things.</p>
-</div> -->
+<div class="home-intro">
+  <p>This is a blog about doing things the right way.</p>
+</div>

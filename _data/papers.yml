@@ -6,13 +6,12 @@
   url: "/assets/papers/waring.pdf"
   # description: "LinnikWaring's Problem"
   # date: "2025"
-  comments: "Notes for a lecture on Linnik's proof of Waring's Problem. Presented in the Israeli math camp, November 2025."
+  comments: "Notes for a lecture on Linnik's proof of Waring's Problem. Presented in Israeli math camp, November 2025."
 - title: "Class Field Theory"
   url: "/assets/papers/cft.pdf"
   comments: >
-    This is a really huge set of notes on class field theory,
-    amalgamated from various different notes I wrote.
-    It is mostly optimized for containing all the details of the proofs.
+    This is a huge set of notes on class field theory.
+    It is optimized for containing all the nitty-gritty details.
     The first half (group cohomology & local class field theory) is
     really polished and the second half (Brauer groups, global class field theory) is more drafty.
     There is also a proof of Chebotarev density theorem.
