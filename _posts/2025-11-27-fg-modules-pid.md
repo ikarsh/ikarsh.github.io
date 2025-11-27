@@ -104,19 +104,25 @@ if you are thinking about abelian groups, ignore this you're doing great).
 
 Let's look at the first row of the matrix.
 We have $a$ on the corner, and let's take some other element $b$.
+
+$$\pmatrix{
+    a&\star&b&\star&\star\\
+    \dots&\dots&\dots&\dots&\dots
+}$$
+
 <!-- In the case $R = \mathbb{Z}$ -->
 <!-- we can immediately apply the Euclidean algorithm; -->
 Our operations include the column operations 
-that make the operations
+that allows us to replace the pair $(a, b)$ with any of the following:
 
 1. $(a, b) \mapsto (a - \lambda b, b)$
-1. $(a, b) \mapsto (a, b - \lambda a)$
-1. $(a, b) \mapsto (b, a)$.
+2. $(a, b) \mapsto (a, b - \lambda a)$
+3. $(a, b) \mapsto (b, a)$.
 
 In the case $R = \mathbb{Z}$
 we can immediately perform the Euclidean algorithm to reduce $(a, b)$ into $(\gcd(a, b), 0)$.
 
-In the case of general $R$ this doesn't quite work;
+For general $R$ this doesn't quite work;
 we are given $s,t$ such that $sa + tb = \gcd(a, b)$
 but it might not be possible to get to the $\gcd$
 using only the reduction steps above.
@@ -131,10 +137,10 @@ $$
 
 to replace $(a, b)$ with $(\gcd(a, b), 0)$ anyways.
 
-We can go over every element in the first row and $\gcd$-squish it into the first one,
-until the first element is the total $\gcd$ and all the others are zero
+Now we can go over every element in the first row and $\gcd$-squish it into the first one,
+until the first element is the total $\gcd$ of the row and all the other elements are zero
 (the first element might start out as $0$, but as long as there is some nonzero element in the row
-we can replace them. Of course, $0$ is the largest element in $R$).
+we can switch them. Of course, $0$ is the largest element in $R$, we don't want it in the corner).
 
 Now we can look at the first column of $A$.
 And we can do exactly the same process to it, this time using row operations.
@@ -176,7 +182,7 @@ Eventually, all values in the first row and column,
 apart from the corner, would be zero.
 When this stage is reached,
 we can start doing the same algorithm on the smaller $(n - 1) \times (m - 1)$ matrix inside,
-and it won't be able to ruin the clean state of the first and second columns:
+and it won't ruin the clean state of the first and second columns:
 
 $$
 \pmatrix{
@@ -212,8 +218,8 @@ This thing is called the Smith normal form.
 
 ---
 
-This proof is not complete because I used the fact submodules of $R^n$ are finitely generated without proving it.
-However, I'll be delighted to tell you I didn't _technically_ need this fact.
+The proof is not complete because I used the fact submodules of $R^n$ are finitely generated without proving it.
+However, I'll be delighted to tell you that I didn't _technically_ need this fact.
 
 The process described above works just fine for $n \times \infty$ matrices.
 Given an infinite row,
