@@ -48,7 +48,7 @@ is a direct sum of finitely many cyclic groups.
 replace every instance of $R$ with $\mathbb{Z}$ and every instance of $M$
 with the finitely generated abelian group, you won't miss out on anything)
 
-Let's reframe this. Since $M$ is finitely generated, we can define a surjective
+Since $M$ is finitely generated, we can define a surjective
 homomorphism $\phi : R^n \to M$ by $(r_1, \dots , r_n) \mapsto r_1m_1 + \dots + r_nm_n$.
 Let $K$ be the kernel of $\phi$.
 It turns out that every submodule of $R^n$
@@ -68,20 +68,17 @@ $$\pmatrix{
 } : R^m \to R^n.$$
 
 If this matrix was diagonal, then the result of the theorem would be clear;
-the quotient $R^m / im(f)$ would factor into individual terms that are either $R/a_{ii}R$ or just $R$.
+the quotient $R^m / im(f)$ would factor as a direct sum of that are either $R/a_{ii}R$ or just $R$.
 Note that a non-square matrix can be diagonal just fine, it will simply have some rows or columns that have to be filled with zeros.
 
-Let's take an automorphism $\phi : R^n \to R^n$.
-
+Let's take an automorphism $\phi : R^n \to R^n$ (i.e. an element of $GL_n(R)$).
 <!-- Let's take two distinct indices $1 \le i,j \le n$ and an element $\lambda$ in $R$. 
 Then there is an automorphism $\phi_{i,j,\lambda} : R^n \to R^n$
 defined by 
-
 $$\phi_{i,j,\lambda}(r_1, \dots, r_n) = (r_1, \dots, r_{i - 1}, r_i + \lambda r_j, r_{i + 1}, \dots, r_n).$$ -->
-
 Replacing the linear map $f$ by the composition $f \circ \phi$
 has absolutely no effect on $M$; indeed, the two maps $f$ and $f \circ \phi$
-have exactly the same image. But this composition does have an effect on the matrix that represents $f$; 
+have exactly the same image so they define the same $M$. But this composition does have an effect on the matrix that represents $f$; 
 it multiplies it by an invertible $n \times n$ matrix from the right.
 
 <!-- (either that or the other direction.) -->
