@@ -211,3 +211,21 @@ a:hover {
   font-style: italic;
   color: var(--text-muted);
 } */
+
+.paper-comments {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.paper-item .paper-meta {
+  margin-bottom: 0;
+}
+
+.paper-comments {
+  margin-top: 0rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}

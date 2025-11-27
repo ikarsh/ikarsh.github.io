@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Papers/Notes
+title: Papers and Notes
 permalink: /papers/
 ---
 
@@ -9,6 +9,9 @@ permalink: /papers/
   <li class="paper-item">
     <div class="paper-title"><a href="{{ paper.url }}">{{ paper.title }}</a></div>
     <div class="paper-meta">{% if paper.date %}{{ paper.date }} · {% endif %}{{ paper.description }}</div>
+    {% if paper.comments %}
+    <div class="paper-comments">{{ paper.comments | strip_newlines }}</div>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>

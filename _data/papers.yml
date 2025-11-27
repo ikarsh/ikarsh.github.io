@@ -1,4 +1,19 @@
 - title: "Local Fields"
   url: "/assets/papers/local-fields.pdf"
-  description: "Replace this with your actual paper"
-  date: "2025"
+  description: "Notes about the structure of local fields"
+  # date: "2025"
+- title: "Warings's Problem"
+  url: "/assets/papers/waring.pdf"
+  # description: "LinnikWaring's Problem"
+  # date: "2025"
+  comments: "Notes for a lecture on Linnik's proof of Waring's Problem. Presented in the Israeli math camp, November 2025."
+- title: "Class Field Theory"
+  url: "/assets/papers/cft.pdf"
+  comments: >
+    This is a really huge set of notes on class field theory,
+    amalgamated from various different notes I wrote.
+    It is mostly optimized for containing all the details of the proofs.
+    The first half (group cohomology & local class field theory) is
+    really polished and the second half (Brauer groups, global class field theory) is more drafty.
+    There is also a proof of Chebotarev density theorem.
+  # date: "2024"
