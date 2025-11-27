@@ -60,3 +60,7 @@ kramdown:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+header_pages:
+  - blog.md
+  - papers.md
