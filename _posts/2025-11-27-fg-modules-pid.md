@@ -68,7 +68,7 @@ $$\pmatrix{
 } : R^m \to R^n.$$
 
 If this matrix was diagonal, then the result of the theorem would be clear;
-the quotient $R^m / im(f)$ would factor as a direct sum of that are either $R/a_{ii}R$ or just $R$.
+the quotient $R^m / im(f)$ would factor as a direct sum of terms that are either $R/a_{ii}R$ or just $R$.
 Note that a non-square matrix can be diagonal just fine, it will simply have some rows or columns that have to be filled with zeros.
 
 Let's take an automorphism $\phi : R^n \to R^n$ (i.e. an element of $GL_n(R)$).
