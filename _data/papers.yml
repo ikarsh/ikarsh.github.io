@@ -15,6 +15,17 @@
     The first half (group cohomology & local class field theory) is
     really polished and the second half (Brauer groups, global class field theory) is more drafty.
     There is also a proof of Chebotarev density theorem.
+- title: "Homotopic Topology"
+  url: "/assets/papers/homotopic-topology.pdf"
+  comments: >
+    These are notes about topics in algebraic topology:
+    proving the main theorems with spectral sequences, 
+    obstruction theory,
+    cohomology operations, the adams spetral sequence, and K-theory.
+    The sections on K-theory and on the Adams spectral sequence are more rough.
+    The notes are based mostly on the book "Homotopic Topology" by Fomenko and Fuchs,
+    but I used many other sources to fill in proofs
+    and to structure things in a way that made sense to me.
 - title: "GAGA"
   url: "/assets/papers/gaga.pdf"
   comments: >
