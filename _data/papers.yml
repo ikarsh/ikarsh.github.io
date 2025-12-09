@@ -31,5 +31,9 @@
   comments: >
     A writeup of the proof of GAGA.
     Meant to contain all the relevant background.
+- title: "The Grothendieck Spectral Sequence"
+  url: "/assets/papers/grothendieck-spectral-sequence.pdf"
+  comments: >
+    Notes on the Grothendieck spectral sequence.
 - title: "nielsen"
   url: "/assets/papers/nielsen-transformations.pdf"
