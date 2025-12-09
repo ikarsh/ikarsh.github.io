@@ -1,6 +1,8 @@
 - title: "Local Fields"
   url: "/assets/papers/local-fields.pdf"
-  description: "Notes about the structure of local fields"
+  comments: >
+    "Notes about ramification and tame ramification in local fields, 
+    leading to the structure of the absolute Galois group of a local field."
   # date: "2025"
 - title: "Warings's Problem"
   url: "/assets/papers/waring.pdf"
