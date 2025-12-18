@@ -1,8 +1,8 @@
 - title: "Local Fields"
   url: "/assets/papers/local-fields.pdf"
   comments: >
-    "Notes about ramification and tame ramification in local fields, 
-    leading to the structure of the absolute Galois group of a local field."
+    Notes about ramification and tame ramification in local fields, 
+    leading to the structure of the absolute Galois group of a local field.
   # date: "2025"
 - title: "Warings's Problem"
   url: "/assets/papers/waring.pdf"
@@ -37,5 +37,10 @@
   url: "/assets/papers/grothendieck-spectral-sequence.pdf"
   comments: >
     Notes on the Grothendieck spectral sequence.
-- title: "nielsen"
-  url: "/assets/papers/nielsen-transformations.pdf"
+- title: "Group extensions and cohomology"
+  url: "/assets/papers/group-extensions.pdf"
+  comments: >
+    The relationship between group extensions and group cohomology.
+    computations with first, second, and third cohomology.
+# - title: "nielsen"
+#   url: "/assets/papers/nielsen-transformations.pdf"
