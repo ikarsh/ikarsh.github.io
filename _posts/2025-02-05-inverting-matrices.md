@@ -6,113 +6,156 @@ title: "Inverting matrices the right way"
 date: 2025-02-05
 ---
 
-$$
-\newcommand{\nc}[3]{\newcommand{#2}[#1]{#3}}
-\nc0{\(}{\left(}
-\nc0{\)}{\right)}
-\nc0{F}{\mathbb{F}}
-\nc0{s}{\sigma}
-\nc0{End}{\text{End}}
-\nc0{adj}{\text{adj}}
-\nc0{Tr}{\text{Tr}}
-\nc0{Wedge}{\bigwedge}
-\nc0{^}{\wedge}
-\nc0{mto}{\mapsto}
-\nc0{a}{\alpha}
-\nc2{Hom}{\text{Hom}\(#1, #2\)}
-\nc0{\ox}{\otimes}
-$$
-
-Let $\F$ be a field and $V$ be an $n$-dimensional vector space over $\F$. Let $A \in \End(V)$ be a linear operator with nonzero determinant. Why does $A$ have an inverse?
+Let $V$ be a finite-dimensional vector space over a field $\mathbb{F}$. Let $A : V \to V$ be a linear map with nonzero determinant. Why does $A$ have an inverse?
 
 Here is the standard proof presented in a linear algebra course:
 
-1. Choose a basis $B=(e_i)$ for $V$ and write $A$ in matrix form $(A_{ij})$ with respect to the basis.
+1. Choose a basis $e_1, \dots, e_n$ for $V$ and write $A$ in matrix form $(A_{ij})$ with respect to the basis.
 
-2. Define the determinant $\det A=\sum_{\s \in S_n}(-1)^\s\prod_iA_{i,\s(i)}$.
+2. Define the determinant $\det A=\sum_{\sigma \in S_n}(-1)^\sigma\prod_iA_{i,\sigma(i)}$.
 
-3. Define the adjugate matrix $\adj A$ as the $n \times n$ matrix with entries
+3. Define the adjugate matrix $\operatorname{adj} A$ (which everyone thinks is called the adjoint) as the $n \times n$ matrix with entries
 
    $$
-   (\adj A)_{ij} = (-1)^{i+j}\det M_{ji}
+   (\operatorname{adj} A)_{ij} = (-1)^{i+j}\det M_{ji}
    $$
 
-   where $M_{ji}$ is the $j,i$-minor of $A$, that is, the resulting matrix when we delete the $j$th row and $i$th column.
+   where $M_{ji}$ is the $j,i$-minor of $A$; that is, $M_{ji}$ is the resulting matrix when we delete the $j$th row and $i$th column from $A$.
 
-4. Observe via direct calculation that $A \cdot \adj A = \adj A \cdot A = \det A \cdot I_V$, and therefore $\frac{1}{\det A}\adj A$ is the inverse of $A$.
+4. Show by a direct calculation that $A \cdot \operatorname{adj} A = \operatorname{adj} A \cdot A = \det A \cdot I_V$, and therefore $\frac{1}{\det A}\operatorname{adj} A$ is the inverse of $A$.
+Thus, $A$ has an inverse.
 
-This adjugate matrix proceeds to never get mentioned again.
+The adjugate matrix proceeds to never get mentioned again.
 
-This proof is bad, as seen immediately by its first three words. Choosing a basis should be a last resort; A base-free proof is better if one wants to generalize the case of a vector space to vector bundles, or if one simply has a heart. We can do better.
+This proof is bad. It's very computational,
+and it involves defining lots of things by complicated formulas that appear out of nowhere.
+
+The root of the proof's evil comes from its first three words. You don't need to mention a basis to say "linear maps (with nonzero determinant) have inverses", so an ideal proof would not use one. 
+A base-free proof will also allow us to generalize the theorem to more general contexts, like vector bundles. But even before learning of such things, one's heart strives for a better proof.
+ <!-- but even if you haven't heard of those, don't you have a heart? We can do better. -->
 
 ---
 
-Let us start by defining the determinant in a more sensible way.
+I will start with an informal reminder on the _exterior power_,
+to hopefully make the post comprehensible for people who only sort-of understand tensor products.
 
-Consider the $n$th exterior algebra $\Wedge^n V$. This is a one-dimensional vector space over $\F$, but there is no natural isomorphism between it and $\F$. Our operator $A$ defines an operator $\Wedge^nA$ on $\End(\Wedge^nA)$ via
+Given a vector space $V$, its $k$th exterior power $\bigwedge^k V$ is a strange vector space,
+containing the strange vectors $v_1 \wedge v_2 \wedge \cdots \wedge v_k$,
+where each $v_i$ is some vector in $V$.
+In other words, there are vectors in $\bigwedge^k V$ that are themselves built from a sequence of $k$ vectors from $V$, separated by wedge symbols.
+
+This doesn't mean that every vector of $\bigwedge^k V$ has the form $v_1 \wedge v_2 \wedge \cdots \wedge v_k$; general vectors of the exterior power are messier, and can only be expressed as a sum of those pure vectors. For instance, 
+
+$$\pmatrix{1 \\ 2 \\ 3} \wedge \pmatrix{4 \\ 5 \\ 6} + \pmatrix{7 \\ 8 \\ 9} \wedge \pmatrix{10 \\ 11 \\ 12}$$
+
+is a perfectly valid vector in $\bigwedge^2 \mathbb{R}^3$, and there is no reason to believe we can write any shorter expression for it.
+
+There are two axioms satisfied by the pure vectors of $\bigwedge^k V$.
+The first one is multilinearity, meaning that
 
 $$
-v_1 \^v_2\^\dots\^v_n \mto Av_1\^Av_2\^\dots\^Av_n
+v_1 \wedge \cdots \wedge (\lambda \cdot u + \lambda' \cdot u')  \wedge \cdots \wedge v_k = 
+\lambda \cdot \left(v_1 \wedge \cdots \wedge u  \wedge \cdots \wedge v_k\right) + \lambda' \cdot \left(v_1 \wedge \cdots \wedge u'  \wedge \cdots \wedge v_k\right)
 $$
 
-Since $\Wedge^nV$ is one-dimensional, the only operators that can be defined on it are multiplications by scalars. Therefore, there must be a unique scalar such that $\Wedge^n A$ is multiplication by it. We call this scalar $\det A$.
+and the second is antisymmetry, which says that replacing two components changes the vector by a factor of $-1$:
 
-The standard properties of determinants follow naturally. For instance, to compute $\det(AB)$, we need to consider the action of applying $AB$ on all the vectors of $v_1 \^ v_2 \^ \dots \^ v_n$. But applying $B$ is equivalent to multiplying the entire thing by $\det B$, and then applying $A$ is equivalent to multiplying the entire thing by $\det A$.
+$$
+v_1 \wedge \cdots \wedge v_i  \wedge \cdots  \wedge v_j  \wedge \cdots v_k = -\left(v_1 \wedge \cdots \wedge v_j  \wedge \cdots  \wedge v_i  \wedge \cdots v_k\right).
+$$
+
+Note how our (sloppy) definition for $\bigwedge^k V$ did not invoke any choice of a basis.
+
+Using the axioms, we can calculate the dimension of the exterior product. Say that $V$ has dimension $n$, and let $e_1, \dots, e_n$ be some basis for $V$. Then we can use the first axiom to express any pure vector $v_1 \wedge \cdots \wedge v_k$ using only pure vectors of the form $e_{i_1} \wedge \cdots \wedge e_{i_k}$. Then, we can use the second axiom to sort the $e_i$'s, and force $i_1 \le i_2 \le \cdots \le i_k$. However, a double appearance of some $e_i$ makes the entire vector vanish, since $v \wedge v = -\left(v \wedge v\right)$ by the second axiom! So actually, we can assume that $i_1 < \cdots < i_k$.
+The amount of tuples satisfying $i_1 < \cdots < i_k$ is $\binom{n}{k}$,
+so we have $\operatorname{dim}(\bigwedge^k V) = \binom{n}{k}$.
+
+(In the last paragraph I assumed that the characteristic of $\mathbb{F}$ is not $2$; when the characteristic is $2$ we consider the $v \wedge v = 0$ property as an axiom)
 
 ---
 
-The construction of the adjugate is a bit more complicated. Consider the vector space $\Wedge^{n - 1}V$. This space has dimension $n$ (but it isn't naturally isomorphic to either $V$ or $V^*$). For every $v \in V$ we define a natural linear map $\phi_v:\Wedge^{n-1}V \to \Wedge^nV$ by $\phi_v(T) = T \^ v$. Since $\phi_{\a v+\a'v'} = \a\phi_v+\a'\phi_{v'}$, we actually get a linear map
+Now, let us define the determinant in a more sensible way.
+
+Suppose that $V$ is an $n$-dimensional vector space.
+Consider the $n$th exterior power $\bigwedge^n V$. This is a one-dimensional vector space, just like $\mathbb{F}$, but there is no natural isomorphism between it and $\mathbb{F}$. Our operator $A : V \to V$ defines an operator $\bigwedge^nA : \bigwedge^nV \to \bigwedge^nV$ via
 
 $$
-\phi:V \to \Hom{\Wedge^{n-1}V}{\Wedge^nV}
+v_1 \wedge v_2\wedge \cdots\wedge v_n \mapsto Av_1\wedge Av_2\wedge \cdots\wedge Av_n.
 $$
 
-Note that $\phi$ is a map between two vector spaces of dimension $n$. It has to be injective, since for every nonzero $v$ we can find $v_1, \dots, v_{n - 1}$ so that $v_1 \^ \dots \^ v_{n - 1} \^ v \ne 0$. This implies $\phi$ is an isomorphism.
+Since $\bigwedge^nV$ is one-dimensional, the only operators that can be defined on it are multiplications by scalars. Therefore, there must be a unique scalar such that $\bigwedge^n A$ is multiplication by it. We call this scalar $\det A$.
 
-We are now ready to define the adjugate. Hooray! We want it to be an operator on $V$, but we know $V$ is naturally isomorphic to $\Hom{\Wedge^{n-1}V} {\Wedge^nV}$. As before, $A \in \End(V)$ defines $\Wedge^{n-1}A \in \End(\Wedge^{n-1}V)$ by applying $A$ on all the vectors, and pre-composition with $\Wedge^{n-1}A$ is an operator on $\Hom{\Wedge^{n-1}V}{\Wedge^nV}$ that depends on $A$. This turns out to be the adjugate!
-
-Making this more concrete: $(\adj A)v$ is the unique vector such that, for all $v_1, \dots, v_{n - 1}$, there is equality
-
-$$
-v_1 \^ v_2 \^ \dots \^ v_{n - 1} \^ (\adj A)v = Av_1 \^ Av_2 \^ \dots \^ Av_{n - 1} \^ v
-$$
-
-From this property, we can deduce that $(\adj A) \cdot A = (\det A) \cdot I_V$, because of
+The standard properties of determinants follow naturally. For instance, 
+we can prove that $\det(AB) = \det(A) \cdot \det(B)$ by the computation
 
 $$
-(\det A)v_1 \^ \dots \^ v_n = Av_1 \^ \dots \^ Av_n = v_1 \^ \dots \^ v_{n - 1} \^ (\adj A)Av_n
+\det(AB) \cdot (v_1 \wedge \cdots \wedge v_n) = ABv_1 \wedge \cdots \wedge ABv_n = \det A \cdot (Bv_1 \wedge \cdots \wedge Bv_n) = \det A \cdot \det B \cdot (v_1 \wedge \cdots \wedge v_n).
 $$
 
-Which shows that if $\det A$ is nonzero, $A'=\frac1{\det A}\adj A$ is a left-inverse for $A$.
+<!-- to compute $\det(AB)$, we need to consider the action of applying $AB$ on all the vectors of $v_1 \wedge  v_2 \wedge  \cdots \wedge  v_n$. But applying $B$ is equivalent to multiplying the entire thing by $\det B$, and then applying $A$ is equivalent to multiplying the entire thing by $\det A$. -->
 
-If $A'$ is the left-inverse of $A$, then $A'$ must also have nonzero determinant and by the same argument have a left-inverse $A''$. We then have
+---
+
+The sensible construction of $\operatorname{adj} A$ is a bit more complicated. Consider the vector space $\bigwedge^{n - 1}V$. This space has dimension $n$ (but it isn't naturally isomorphic to either $V$ or $V^*$). For every $v \in V$ we define a natural linear map $\phi_v:\bigwedge^{n-1}V \to \bigwedge^nV$ by $\phi_v(T) = T \wedge  v$. Since $\phi_{\lambda v+\lambda'v'} = \lambda\phi_v+\lambda'\phi_{v'}$, we actually get a linear map
 
 $$
-AA'=A''A'AA'=A''A'=I_V
+\phi:V \to \operatorname{Hom}\left(\bigwedge^{n-1}V, \bigwedge^nV\right).
 $$
 
-proving that $A'$ is also a right-inverse for $A$. This finishes our natural construction of the inverse.
+Note that $\phi$ is a map between two vector spaces of dimension $n$. It has to be injective, because for every nonzero $v$ we can find $v_1, \dots, v_{n - 1}$ so that $v_1 \wedge  \cdots \wedge  v_{n - 1} \wedge  v \ne 0$. This implies $\phi$ is an isomorphism.
+
+This isomorphism is crucial to our definition of the adjugate. 
+We want $\operatorname{adj} A$ to be a map $V \to V$,
+but we have a natural isomorphism between $V$ and $\operatorname{Hom}\left(\bigwedge^{n-1}V,  \bigwedge^nV\right)$. As before, $A:V \to V$ defines a map $\bigwedge^{n-1}A\colon \bigwedge^{n-1}V \to \bigwedge^{n - 1}V$ 
+that applies $A$ to each term of $v_1 \wedge \cdots \wedge v_{n - 1}$. 
+Precomposition with $\bigwedge^{n-1}A$ is a linear map from $\operatorname{Hom}\left(\bigwedge^{n-1}V, \bigwedge^nV\right)$ to itself, that depends on $A$. It turns out that under the isomorphism $\phi$, this precomposition corresponds to $\operatorname{adj} A$!
+
+Making this more concrete: $(\operatorname{adj} A)v$ is the unique vector such that, for all $v_1, \dots, v_{n - 1}$, there is equality
+
+$$
+v_1  \wedge  \cdots \wedge  v_{n - 1} \wedge  (\operatorname{adj} A)v = Av_1 \wedge  \cdots \wedge  Av_{n - 1} \wedge  v.
+$$
+
+From this property, we can deduce that $\operatorname{adj} A \cdot A = \det A \cdot I_V$, because
+
+$$
+\det A \cdot (v_1 \wedge  \cdots \wedge  v_n) = Av_1 \wedge  \cdots \wedge  Av_n = v_1 \wedge  \cdots \wedge  v_{n - 1} \wedge  (\operatorname{adj} A \cdot A) v_n.
+$$
+
+It follows that if $\det A \ne 0$, then $A'=\frac1{\det A}\operatorname{adj} A$ is a left-inverse for $A$.
+
+If $A'$ is the left-inverse of $A$, then $A'$ must also have nonzero determinant 
+(since $\det A' \cdot \det A = 1$), so by the same argument it must have a left inverse $A''$. 
+We then have
+
+$$
+AA'=(A''A')AA'= A''(A'A)A' = A''A'=I_V
+$$
+
+proving that $A'$ is also a right-inverse for $A$. 
+This finishes our natural construction of the inverse.
 
 ---
 
 This proof was presented to me a few years ago by a friend and I really like it. Doing base-free constructions forces us to find the better definitions to objects like the determinant or the adjugate.
 
-Another base-free definition worth noting, that is more famous, is that of the trace. For finite-dimensional vector spaces $V$ and $W$ there is a natural homomorphism $\Phi:V^* \ox W \to \Hom VW$, defined via
+Another base-free definition worth noting, that is more famous, is that of the trace. For finite-dimensional vector spaces $V$ and $W$ there is a natural homomorphism $\Phi:V^* \otimes W \to \operatorname{Hom}(V, W)$, defined via
 
 $$
-\Phi(\phi \ox w)(v) = \phi(v)w
+\Phi(\phi \otimes w)(v) = \phi(v)w.
 $$
 
-This map is an isomorphism (to see that you kind of have to use a basis - but using a basis to _prove_ a property is far more legitimate than using a basis to _construct_ an object). This implies that $\End(V)$ is isomorphic to $V^* \ox V$. But there is a natural functional on this space, sending $\phi \ox v$ to $\phi(v)$, and this turns out to be equivalent to the trace. It is a fun exercise to see that properties of the trace (such as $\Tr AB = \Tr BA$) follow naturally from this definition.
+This map is an isomorphism (to see that you have to use a basis - but using a basis to _prove properties_ is very different from using a basis to _construct objects_). This implies that $\operatorname{End}(V)$ is isomorphic to $V^* \otimes V$. But there is a natural functional on this space, sending $\phi \otimes v$ to $\phi(v)$, and this turns out to be equivalent to the trace. It is a fun exercise to see that properties of the trace (such as $\operatorname{Tr} AB = \operatorname{Tr} BA$) follow naturally from this definition.
 
 ---
 
-Regarding the end of the proof, note that we showed $(\adj A)\cdot A = (\det A)\cdot I_V$, but not the other direction $A \cdot (\adj A) = (\det A) \cdot I_V$. We did prove it when $\det A\ne 0$, since in that case $\frac1{\det A}\adj A = A^{-1}$, however this fails in the case $\det A = 0$. There are a few options to complete this: we can view the case of zero determinant as a limit case of the nonzero determinant case, or we can use the definition of $\adj A$ directly: Take $u \in \ker A$, and note that in the formula
+Regarding the end of the proof, note that we showed $(\operatorname{adj} A)\cdot A = (\det A)\cdot I_V$, but not the other direction $A \cdot (\operatorname{adj} A) = (\det A) \cdot I_V$. We did prove it when $\det A\ne 0$, since in that case $\frac1{\det A}\operatorname{adj} A = A^{-1}$, however this fails in the case $\det A = 0$. There are a few options to complete this: we can view the case of zero determinant as a limit case of the nonzero determinant case, or we can use the definition of $\operatorname{adj} A$ directly: Take $u \in \ker A$, and note that in the formula
 
 $$
-v_1 \^ v_2 \^ \dots \^ v_{n - 1} \^ (\adj A)v = Av_1 \^ Av_2 \^ \dots \^ Av_{n - 1} \^ v
+v_1 \wedge  v_2 \wedge  \cdots \wedge  v_{n - 1} \wedge  (\operatorname{adj} A)v = Av_1 \wedge  Av_2 \wedge  \cdots \wedge  Av_{n - 1} \wedge  v
 $$
 
-replacing $v_{n - 1}$ by $v_{n - 1}+u$ does not alter the right hand side. The implication is that $v_1 \^ \dots \^ v_{n - 2} \^ u \^ (\adj A)v = 0$, meaning that $v_1,\dots,v_{n-2},(\adj A)v$ have a combination that is a nontrivial element in $\ker A$. Since this is true for every choice of $v_1,\dots,v_{n - 2}$, it must be true that either $\dim \ker A>1$ or that $(\adj A)v$ is itself in the kernel. The first case implies that $\adj A$ itself vanishes, and the second is what we needed to prove.
+replacing $v_{n - 1}$ by $v_{n - 1}+u$ does not alter the right hand side. The implication is that $v_1 \wedge  \cdots \wedge  v_{n - 2} \wedge  u \wedge  (\operatorname{adj} A)v = 0$, meaning that $v_1,\dots,v_{n-2},(\operatorname{adj} A)v$ have a combination that is a nontrivial element in $\ker A$. Since this is true for every choice of $v_1,\dots,v_{n - 2}$, it must be true that either $\dim \ker A>1$ or that $(\operatorname{adj} A)v$ is itself in the kernel. The first case implies that $\operatorname{adj} A$ itself vanishes, and the second is what we needed to prove.
 
-I find it curious that $(\adj A)\cdot A = (\det A)\cdot I_V$ followed so directly from the definition, but the other direction $A \cdot (\adj A)=(\det A) \cdot I_V$ was so indirect. Both formulas are true for any square matrix with entries in any commutative ring.
+I find it curious that $(\operatorname{adj} A)\cdot A = (\det A)\cdot I_V$ followed so directly from the definition, but the other direction $A \cdot (\operatorname{adj} A)=(\det A) \cdot I_V$ was so indirect. Both formulas are true for any square matrix with entries in any commutative ring.
+<!-- but I suspect that in some more general setting, it really  that one of them holds and the other doesn't. -->
