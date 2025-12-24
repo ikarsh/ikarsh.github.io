@@ -113,7 +113,7 @@ $$\pmatrix{
 <!-- In the case $R = \mathbb{Z}$ -->
 <!-- we can immediately apply the Euclidean algorithm; -->
 Our operations include the column operations 
-that allows us to replace the pair $(a, b)$ with any of the following:
+that allow us to replace the pair $(a, b)$ with any of the following:
 
 1. $(a, b) \mapsto (a - \lambda b, b)$
 2. $(a, b) \mapsto (a, b - \lambda a)$
