@@ -7,14 +7,14 @@ date: 2025-12-25
 ---
 
 I never really studied logic, but I think I have interesting things to say about the basics.
-Logic is the home of the infamous incompleteness theorems,
+Logic is the home of the incompleteness theorems,
 saying that no matter what axioms you start with, as long as they don't contradict each other, you will always:
 
 1. have statements that you can't prove and also can't disprove
 
-2. be unable to _prove_ that your axioms don't contradict each other. In other words, the statement "there are no provable statements whose negation is also provable" is not provable.
+2. be unable to _prove_ that your axioms don't contradict each other. In other words, the statement "there are no provable statements whose negation is also provable" will not be provable.
 
-This way of stating things is a bit sloppy and pop-mathy; a better person than me would discuss in precise terms what it means to have axioms or prove things or for things to be correct. I won't.
+This way of stating things is a bit sloppy; a better person than me would discuss in precise terms what it means to have axioms or prove things or for things to be correct. I won't.
 I will, however, say that your language should be sophisticated enough to talk about python. You should be able to express statements like "The python program
 ```python
 a = 7
@@ -47,7 +47,7 @@ while True:
 ```
 halts", which you probably don't know how to prove or disprove.
 
-In fact - fuck this, we can translate everything to python. We can implement some python classes `Proof` and `Statement` whose objects encode proofs and statements. We can implement a function
+In fact - we can translate everything to python. We can implement some python classes `Proof` and `Statement` whose objects encode proofs and statements. We can implement a function
 ```py
 def statement_that_code_halts(code: Code) -> Statement
 ```
