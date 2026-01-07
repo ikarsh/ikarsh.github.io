@@ -1,0 +1,34 @@
+- title: "Class Field Theory"
+  url: "/assets/papers/cft.pdf"
+  comments: >
+    A huge set of notes on class field theory, optimized for containing all the nitty-gritty details.
+    The first half (group cohomology & local class field theory) is polished;
+    the second half (Brauer groups, global class field theory) is more drafty.
+    Includes a proof of Chebotarev density theorem.
+- title: "Local Fields"
+  url: "/assets/papers/local-fields.pdf"
+  comments: >
+    Notes about ramification and tame ramification in local fields,
+    leading to the structure of the absolute Galois group of a local field.
+- title: "Homotopic Topology"
+  url: "/assets/papers/homotopic-topology.pdf"
+  comments: >
+    Notes on algebraic topology: spectral sequences, obstruction theory,
+    cohomology operations, the Adams spectral sequence, and K-theory.
+    Based mostly on Fomenko and Fuchs, with other sources to fill in proofs.
+- title: "GAGA"
+  url: "/assets/papers/gaga.pdf"
+  comments: >
+    A writeup of the proof of GAGA with all the relevant background.
+- title: "Waring's Problem"
+  url: "/assets/papers/waring.pdf"
+  comments: "Notes for a lecture on Linnik's proof. Presented in Israeli math camp, November 2025."
+- title: "The Grothendieck Spectral Sequence"
+  url: "/assets/papers/grothendieck-spectral-sequence.pdf"
+  comments: >
+    Notes on the Grothendieck spectral sequence.
+- title: "Group Extensions and Cohomology"
+  url: "/assets/papers/group-extensions.pdf"
+  comments: >
+    The relationship between group extensions and group cohomology.
+    Computations with first, second, and third cohomology.

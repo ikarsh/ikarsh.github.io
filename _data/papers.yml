@@ -1,46 +1,7 @@
-- title: "Local Fields"
-  url: "/assets/papers/local-fields.pdf"
+- title: "Pro-ℓ-by-cyclotomic and tamely ramified variants of the Neukirch-Uchida Theorem"
+  url: "https://arxiv.org/abs/2601.01251"
+  authors: "Master's thesis, supervised by Mark Shusterman"
   comments: >
-    Notes about ramification and tame ramification in local fields, 
-    leading to the structure of the absolute Galois group of a local field.
-  # date: "2025"
-- title: "Waring's Problem"
-  url: "/assets/papers/waring.pdf"
-  # description: "LinnikWaring's Problem"
-  # date: "2025"
-  comments: "Notes for a lecture on Linnik's proof of Waring's Problem. Presented in Israeli math camp, November 2025."
-- title: "Class Field Theory"
-  url: "/assets/papers/cft.pdf"
-  comments: >
-    This is a huge set of notes on class field theory.
-    It is optimized for containing all the nitty-gritty details.
-    The first half (group cohomology & local class field theory) is
-    really polished and the second half (Brauer groups, global class field theory) is more drafty.
-    There is also a proof of Chebotarev density theorem.
-- title: "Homotopic Topology"
-  url: "/assets/papers/homotopic-topology.pdf"
-  comments: >
-    These are notes about topics in algebraic topology:
-    proving the main theorems with spectral sequences, 
-    obstruction theory,
-    cohomology operations, the adams spetral sequence, and K-theory.
-    The sections on K-theory and on the Adams spectral sequence are more rough.
-    The notes are based mostly on the book "Homotopic Topology" by Fomenko and Fuchs,
-    but I used many other sources to fill in proofs
-    and to structure things in a way that made sense to me.
-- title: "GAGA"
-  url: "/assets/papers/gaga.pdf"
-  comments: >
-    A writeup of the proof of GAGA.
-    Meant to contain all the relevant background.
-- title: "The Grothendieck Spectral Sequence"
-  url: "/assets/papers/grothendieck-spectral-sequence.pdf"
-  comments: >
-    Notes on the Grothendieck spectral sequence.
-- title: "Group extensions and cohomology"
-  url: "/assets/papers/group-extensions.pdf"
-  comments: >
-    The relationship between group extensions and group cohomology.
-    computations with first, second, and third cohomology.
-# - title: "nielsen"
-#   url: "/assets/papers/nielsen-transformations.pdf"
+    We show that the isomorphism type of a number field can be recovered
+    from the maximal pro-ℓ-by-cyclotomic quotient of its absolute Galois group,
+    and also from the maximal tamely ramified quotient.

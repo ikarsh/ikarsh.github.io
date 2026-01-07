@@ -63,4 +63,5 @@ kramdown:
 
 header_pages:
   - blog.md
+  - notes.md
   - papers.md

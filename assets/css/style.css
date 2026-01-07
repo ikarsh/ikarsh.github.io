@@ -1,11 +1,13 @@
 :root {
-  --accent: #2d5a7b;
-  --accent-light: #4a8ab5;
+  --accent: #d97757;
+  --accent-hover: #c4654a;
   --bg-main: #faf9f7;
-  --bg-subtle: #f0efeb;
-  --bg-header: #fff;
-  --text-muted: #6c757d;
-  --text-dark: #2c3e50;
+  --bg-code: #f0efeb;
+  --text-primary: #131314;
+  --text-secondary: #5c5c5e;
+  --text-muted: #8a8a8c;
+  --border: #e5e4dc;
+  --border-light: #eeeee6;
 }
 
 html {
@@ -15,7 +17,7 @@ html {
 body {
   font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
   line-height: 1.8;
-  color: var(--text-dark);
+  color: var(--text-primary);
   font-size: 17px;
   background: var(--bg-main);
 }
@@ -23,14 +25,14 @@ body {
 /* Header */
 .site-header {
   border-top: 4px solid var(--accent);
-  border-bottom: 1px solid #ddd;
-  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-main);
 }
 
 .site-title {
   font-weight: 600;
   letter-spacing: -0.5px;
-  color: var(--text-dark) !important;
+  color: var(--text-primary) !important;
 }
 
 .site-title:hover {
@@ -49,6 +51,23 @@ body {
   color: var(--accent);
 }
 
+/* RSS icon in header */
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.rss-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.4;
+}
+
+.rss-link:hover .rss-icon {
+  opacity: 0.8;
+}
+
 /* Main content area */
 .page-content {
   background: var(--bg-main);
@@ -56,38 +75,93 @@ body {
   padding-bottom: 3rem;
 }
 
-/* Page titles */
-.post-title,
-.page-content h1 {
-  color: var(--text-dark);
+/* Post titles (on blog post pages - large and dark) */
+.post-title {
+  color: var(--text-primary);
   font-weight: 600;
+  font-size: 1.75rem;
   letter-spacing: -0.5px;
+}
+
+/* Page titles (Notes, Papers, Blog pages - small and gray) */
+.page-title {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+/* Section headings on pages */
+.section-heading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-heading:first-of-type {
+  margin-top: 0;
+}
+
+/* Homepage intro */
+.home-intro {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-intro p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-style: italic;
 }
 
 /* Post list */
 .post-list {
   list-style: none;
-  margin-left: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .post-list li {
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  background: white;
-  border-radius: 6px;
-  border: 1px solid #e8e8e8;
+  padding: 1.5rem 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 0;
+}
+
+.post-list li:first-child {
+  padding-top: 0;
+}
+
+.post-list li:last-child {
+  border-bottom: none;
+}
+
+.post-list li h3 {
+  margin: 0;
 }
 
 .post-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-bottom: 0.4rem;
+  display: block;
 }
 
 .post-link {
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
 .post-link:hover {
@@ -98,24 +172,24 @@ body {
 /* Post content */
 .post-content {
   margin-top: 2rem;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid #e8e8e8;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
 }
 
 .post-content h2 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid #eee;
-  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
 }
 
 .post-content h3,
 .post-content h4 {
   margin-top: 2rem;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .post-content p {
@@ -124,22 +198,22 @@ body {
 
 .post-content hr {
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   margin: 3rem auto;
   width: 50%;
 }
 
 .post-content blockquote {
   border-left: 3px solid var(--accent);
-  background: var(--bg-subtle);
-  padding: 1rem 1.5rem;
+  background: transparent;
+  padding: 0 0 0 1.5rem;
   margin: 1.5rem 0;
   font-style: italic;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .post-content code {
-  background: var(--bg-subtle);
+  background: var(--bg-code);
   padding: 0.2em 0.5em;
   border-radius: 4px;
   font-size: 0.88em;
@@ -147,11 +221,11 @@ body {
 }
 
 .post-content pre {
-  background: var(--bg-subtle);
+  background: var(--bg-code);
   padding: 1.25rem;
   border-radius: 6px;
   overflow-x: auto;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border-light);
 }
 
 .post-content pre code {
@@ -175,16 +249,69 @@ mjx-container[display="true"] {
   padding: 0.5rem 0;
 }
 
-/* Footer */
-.site-footer {
-  border-top: 1px solid #ddd;
-  padding: 2rem 0;
-  background: var(--bg-subtle);
+/* Papers list */
+.papers-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.footer-col-wrapper {
-  font-size: 0.9rem;
+.paper-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.paper-item:first-child {
+  padding-top: 0;
+}
+
+.paper-item:last-child {
+  border-bottom: none;
+}
+
+.paper-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.paper-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.paper-title a:hover {
+  color: var(--accent);
+}
+
+.paper-meta {
+  font-size: 0.85rem;
   color: var(--text-muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-bottom: 0;
+}
+
+.paper-comments {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.footer-link {
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+}
+
+.footer-link:hover {
+  color: var(--accent) !important;
 }
 
 /* Links */
@@ -193,7 +320,7 @@ a {
 }
 
 a:hover {
-  color: var(--accent-light);
+  color: var(--accent-hover);
 }
 
 /* Better wrapper width for reading */
@@ -201,31 +328,49 @@ a:hover {
   max-width: 720px;
 }
 
-/* Homepage intro
-.home-intro {
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  background: white;
-  border-radius: 6px;
-  border: 1px solid #e8e8e8;
-  font-style: italic;
-  color: var(--text-muted);
-} */
+/* Syntax highlighting (Rouge) */
+.post-content .highlight .k,
+.post-content .highlight .kd,
+.post-content .highlight .kn,
+.post-content .highlight .kp,
+.post-content .highlight .kr,
+.post-content .highlight .kt,
+.post-content .highlight .kc { color: #8959a8 !important; } /* keywords - purple */
 
-.paper-comments {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  line-height: 1.6;
-}
+.post-content .highlight .s,
+.post-content .highlight .s1,
+.post-content .highlight .s2,
+.post-content .highlight .sb,
+.post-content .highlight .sc,
+.post-content .highlight .sd,
+.post-content .highlight .se,
+.post-content .highlight .sh,
+.post-content .highlight .sx { color: #718c00 !important; } /* strings - green */
 
-.paper-item .paper-meta {
-  margin-bottom: 0;
-}
+.post-content .highlight .c,
+.post-content .highlight .c1,
+.post-content .highlight .cm,
+.post-content .highlight .cp,
+.post-content .highlight .cs { color: #8e908c !important; font-style: italic; } /* comments - gray */
 
-.paper-comments {
-  margin-top: 0rem;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  line-height: 1.6;
-}
+.post-content .highlight .nb,
+.post-content .highlight .bp { color: #4271ae !important; } /* builtins - blue */
+
+.post-content .highlight .nf,
+.post-content .highlight .nc { color: #4271ae !important; } /* functions, classes - blue */
+
+.post-content .highlight .mi,
+.post-content .highlight .mf,
+.post-content .highlight .mh,
+.post-content .highlight .mo { color: #f5871f !important; } /* numbers - orange */
+
+.post-content .highlight .o,
+.post-content .highlight .ow { color: #3e999f !important; } /* operators - teal */
+
+.post-content .highlight .p { color: var(--text-primary) !important; } /* punctuation */
+
+.post-content .highlight .n,
+.post-content .highlight .na,
+.post-content .highlight .nv,
+.post-content .highlight .vi,
+.post-content .highlight .vg { color: var(--text-primary) !important; } /* names, variables */
