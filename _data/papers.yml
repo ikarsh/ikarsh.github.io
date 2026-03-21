@@ -1,3 +1,11 @@
+- title: "Subgroups with all finite lifts isomorphic are conjugate"
+  url: "https://arxiv.org/abs/2602.15463"
+  authors: "Ido Karshon, Alexander Lubotzky, D. B. McReynolds, Alan W. Reid, and Mark Shusterman"
+  comments: >
+    We show that when two subgroups of a finite group are non-conjugate,
+    there exists an extension where their pre-images are not isomorphic.
+    This resolves a question by Dipendra Prasad.
+
 - title: "Pro-ℓ-by-cyclotomic and tamely ramified variants of the Neukirch-Uchida Theorem"
   url: "https://arxiv.org/abs/2601.01251"
   authors: "Master's thesis, supervised by Mark Shusterman"
